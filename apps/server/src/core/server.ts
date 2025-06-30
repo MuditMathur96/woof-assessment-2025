@@ -1,11 +1,10 @@
 import express from 'express';
 import { inferAsyncReturnType, TRPCError } from '@trpc/server';
 import * as trpcExpress from '@trpc/server/adapters/express';
-import { appRouter } from './routes/trpc';
-import routes from './routes/rest';
+import { appRouter } from '../routes/trpc';
+
 const app = express();
-app.use(express.json());
-app.use(routes);
+
 app.use(
   '/trpc',
   trpcExpress.createExpressMiddleware({
