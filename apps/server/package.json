@@ -12,6 +12,10 @@
   "license": "ISC",
   "packageManager": "pnpm@10.6.3",
   "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/multer": "^1.4.13",
+    "@types/node": "^24.0.7",
+    "@types/pdf-parse": "^1.1.5",
     "nodemon": "^3.1.10",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
@@ -19,6 +23,9 @@
   "dependencies": {
     "@trpc/server": "^11.4.3",
     "express": "^5.1.0",
+    "multer": "^2.0.1",
+    "pdf-parse": "^1.1.1",
+    "pdf-parser": "^1.0.5",
     "ts-node": "^10.9.2",
     "zod": "^3.25.67"
   }
