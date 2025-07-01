@@ -1,6 +1,7 @@
 import { Request,Response } from "express";
 import { generateErrorResponse, generateSuccessResponse } from "../utils/responseGenerator";
 import PDFParser from 'pdf-parse';
+import pdfReader from "../utils/pdf-reader";
 
 export default class UploadController{
 
@@ -17,13 +18,13 @@ export default class UploadController{
                      return generateErrorResponse(res,"Both CV and JD are required",400);
                 }
 
-                const cvText = await PDFParser(cvFile.buffer);
-                const jdText = await PDFParser(jdFile.buffer);
+                const cvText = await pdfReader.parse(cvFile.buffer)
+                const jdText = await pdfReader.parse(jdFile.buffer);
 
                 return generateSuccessResponse<{
                     cvText:string,jdText:string
                 }>(res,
-                    {cvText:cvText.text,jdText:jdText.text}
+                    {cvText:cvText,jdText:jdText}
                 );
 
 
