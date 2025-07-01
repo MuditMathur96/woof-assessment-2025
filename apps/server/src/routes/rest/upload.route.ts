@@ -73,9 +73,9 @@ weakness: string[] //array of string containg weakness (maximum 6)
 data: ${prompt}
 }`
     const response =await  ai.Invoke(systemInstruction);
-    console.log(response![0].content?.parts![0].text);
+    console.log(response);
     return generateSuccessResponse(res,
-        JSON.parse(response![0].content?.parts![0]?.text || "")
+        JSON.parse(response)
     );
 });
 

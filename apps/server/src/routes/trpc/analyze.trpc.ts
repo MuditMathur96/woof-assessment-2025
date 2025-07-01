@@ -30,8 +30,7 @@ List down the strengths and weakness of the candidate and rate the candidate bet
 
 
 
-Give the output in JSON format
-Do not add extra characters or line breaks 
+You are a strict JSON generator. You must reply with **only valid JSON** — no explanations, no comments, no markdown, and no extra characters like ${"```"} or ${"```"}json.
 example:{
 
 name: string //candidate name
@@ -52,7 +51,7 @@ data: ${prompt}
 
       try{
         const aiResponse = await ai.Invoke(systemInstruction);
-        const response = JSON.parse(aiResponse![0].content?.parts![0]?.text || "");
+        const response = JSON.parse(aiResponse.replace("```json\n","").replace("```",""));
         return {
           result: true,
           data: response,

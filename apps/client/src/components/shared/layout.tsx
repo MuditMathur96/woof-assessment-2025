@@ -18,7 +18,7 @@ function Logo(){
 function Layout({children}:Props){
 
     return (
-        <div>
+        <div >
             {/* Navbar */}
             <div className="h-12 shadow-md p-2">
                 <nav>
@@ -35,9 +35,9 @@ function Layout({children}:Props){
                 
                 </div>
             {/* Main */}
-            <div className="flex">
+            <div className="container  mx-auto flex">
                 {/* <aside>Sidebar</aside> */}
-                <main className="w-full min-h-[calc(100vh-48px)] ">
+                <main className=" w-full mx-auto bg-red  min-h-[calc(100vh-48px)] ">
                     {children}
                 </main>
             </div>

@@ -37,7 +37,7 @@ class GeminiAI{
 
            console.log(response.candidates);
 
-           return response.candidates;
+           return response?.candidates![0].content?.parts![0].text?.replace('```',"").replace("json\n","");
 
 
 
