@@ -1,12 +1,23 @@
 import express from 'express';
-import { inferAsyncReturnType, TRPCError } from '@trpc/server';
+//Middlewares
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import {rateLimit} from 'express-rate-limit';
+import morgan from "morgan";
+
+//TRPC 
 import * as trpcExpress from '@trpc/server/adapters/express';
 import { appRouter } from './routes/trpc';
 
+const limiterMiddleware = rateLimit({
+  windowMs:1*60*1000, //1minutes
+  limit:20,
+
+})
+
 import routes from './routes/rest';
 import Configs from './configs/configs';
+import { generateErrorResponse } from './utils/responseGenerator';
 const app = express();
 
 app.use(cors({
@@ -14,6 +25,8 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(limiterMiddleware);
+app.use(morgan("dev"))
 
 app.use(routes);
 app.use(

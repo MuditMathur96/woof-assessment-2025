@@ -49,7 +49,7 @@ class GeminiVertexAI{
                 ]
             }
 
-            console.log("Headers:",this.getHeaders())
+            //console.log("Headers:",this.getHeaders())
             const response = await fetch(this.endpoint,{
                 method:"POST",
                 body:JSON.stringify(requestBody),
