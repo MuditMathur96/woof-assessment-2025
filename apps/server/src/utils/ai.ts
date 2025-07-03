@@ -26,12 +26,11 @@ class GeminiVertexAI{
 
     getHeaders(){
         return {
-            'Authorization': `Bearer ${this.authToken}`,
-            'Content-Type':"application/json"
+            'Authorization': `${this.authToken}`,
         }
     }
 
-    async Invoke(content:string){
+    async Invoke(content:string):Promise<string>{
 
         try{
 
@@ -50,18 +49,16 @@ class GeminiVertexAI{
                 ]
             }
 
-            console.log("Headers:",this.getHeaders())
+            //console.log("Headers:",this.getHeaders())
             const response = await fetch(this.endpoint,{
                 method:"POST",
                 body:JSON.stringify(requestBody),
                 headers:this.getHeaders()
 
             });
-
-            console.log(response);
             const data = await response.json();
-            console.log("Response from AI: ");
-            return data;
+         
+            return data.candidates[0].content.parts[0].text;
 
         }catch(error){  
             console.log(error);

@@ -1,4 +1,7 @@
 import {trpcClient} from '../api/trpc';
+import Configs from '@/lib/configs';
+
+const url:string = Configs.BACKEND_URL;
 
 export async function uploadFiles(cv: File, jd: File) {
 
@@ -7,7 +10,7 @@ export async function uploadFiles(cv: File, jd: File) {
         formData.append("jd", jd);
         formData.append("cv", cv);
 
-        const textResponse = await fetch("http://localhost:4000/upload", {
+        const textResponse = await fetch(`${url}/upload`, {
             method: "POST",
             body: formData
         });
