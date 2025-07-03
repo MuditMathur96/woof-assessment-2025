@@ -9,6 +9,7 @@ interface FileUploadProps {
   value:File | null
   className?: string;
   children?: React.ReactNode;
+  title:string
 }
 
 
@@ -18,7 +19,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
   className = "",
   children,
   value,
-  onFilesChange
+  onFilesChange,
+  title
 }) => {
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -89,7 +91,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
             <Upload className="mx-auto h-12 w-12 text-gray-400" />
             <div>
               <p className="text-lg font-medium text-gray-900 dark:text-gray-100">
-                {isDragOver ? 'Drop files here' : 'Upload files'}
+                {isDragOver ? 'Drop files here' : title}
               </p>
              
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">

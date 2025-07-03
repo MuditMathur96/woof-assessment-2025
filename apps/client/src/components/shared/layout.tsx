@@ -1,5 +1,5 @@
 import type React from "react";
-
+import {Toaster} from '@/components/ui/sonner';
 type Props={
     children:React.ReactNode
 }
@@ -39,6 +39,9 @@ function Layout({children}:Props){
                 {/* <aside>Sidebar</aside> */}
                 <main className=" w-full mx-auto bg-red  min-h-[calc(100vh-48px)] ">
                     {children}
+                    <Toaster
+                    position="top-center"
+                    />
                 </main>
             </div>
 
