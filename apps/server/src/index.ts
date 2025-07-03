@@ -21,7 +21,7 @@ import { generateErrorResponse } from './utils/responseGenerator';
 const app = express();
 
 app.use(cors({
-  origin:"http://localhost:5173"
+  origin:Configs.FRONTEND_URL
 }));
 app.use(bodyParser.json());
 app.use(express.json());
